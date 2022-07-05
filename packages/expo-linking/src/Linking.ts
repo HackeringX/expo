@@ -24,8 +24,6 @@ function validateURL(url: string): void {
 function getHostUri(): string | null {
   if (Constants.manifest?.hostUri) {
     return Constants.manifest.hostUri;
-  } else if (Constants.manifest2?.extra?.expoClient?.hostUri) {
-    return Constants.manifest2.extra.expoClient.hostUri;
   } else if (!hasCustomScheme()) {
     // we're probably not using up-to-date xdl, so just fake it for now
     // we have to remove the /--/ on the end since this will be inserted again later
