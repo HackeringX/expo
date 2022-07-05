@@ -115,7 +115,7 @@ internal struct MediaHandler {
         guard error == nil,
               let rawData = rawData,
               let image = try? UIImage(data: rawData) else {
-          return completion(.failure(FailedToLoadImageException(error?.localizedDescription)))
+          return completion(.failure(FailedToReadImageException().maybeCausedBy(error)))
         }
 
         let (imageData, fileExtension) = try ImageUtils.readDataAndFileExtension(image: image,
@@ -188,7 +188,7 @@ internal struct MediaHandler {
       do {
         guard error == nil,
               let videoUrl = url as? URL else {
-          return completion(.failure(FailedToLoadVideoException(error?.localizedDescription)))
+          return completion(.failure(FailedToReadVideoException().maybeCausedBy(error)))
         }
 
         let targetUrl = try generateUrl(withFileExtension: ".mov")

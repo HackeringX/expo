@@ -177,7 +177,7 @@ public class ImagePickerModule: Module, OnMediaPickingResultHandler {
     let mediaHandler = MediaHandler(fileSystem: fileSystem,
                                     options: options)
 
-    // Cleanup the currently stored picking context
+    // Clean up the currently stored picking context
     self.currentPickingContext = nil
 
     mediaHandler.handleMultipleMedia(selection) { result -> Void in
@@ -198,7 +198,7 @@ public class ImagePickerModule: Module, OnMediaPickingResultHandler {
       return promise.reject(FileSystemModuleNotFoundException())
     }
 
-    // Cleanup the currently stored picking context
+    // Clean up the currently stored picking context
     self.currentPickingContext = nil
 
     let mediaHandler = MediaHandler(fileSystem: fileSystem,
