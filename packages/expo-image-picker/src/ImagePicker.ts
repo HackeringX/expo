@@ -229,6 +229,13 @@ export async function launchImageLibraryAsync<T extends ImagePickerOptions>(
   if (!ExponentImagePicker.launchImageLibraryAsync) {
     throw new UnavailabilityError('ImagePicker', 'launchImageLibraryAsync');
   }
+  if (options?.allowsEditing && options.allowsMultipleSelection) {
+    console.warn(
+      '[expo-image-picker] Multiple selection is not supported when cropping is enabled. ' +
+        "Disable either 'allowsEditing' or 'allowsMultipleSelection' in 'launchImageLibraryAsync' " +
+        'to fix this warning.'
+    );
+  }
   return await ExponentImagePicker.launchImageLibraryAsync(options ?? {});
 }
 
